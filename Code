@@ -1,74 +1,53 @@
-1. Chú thích
-- C++ hỗ trợ 2 cách chú thích:
-+ Chú thích một dòng //
+7. Cấp phát và giải phóng bộ nhớ: new và delete
+- Trong C, cấp phát bộ nhớ động thường dùng:
+malloc()
+calloc()
+realloc()
+free()
+-_Trong C++, có cách riêng để cấp phát và giải phóng bộ nhớ:
+new
+delete
+new
+Dùng để cấp phát bộ nhớ động.
+Cú pháp:
+kiểu_dữ_liệu *tên_con_trỏ = new kiểu_dữ_liệu;
+8. Hàm inline 
+inline là từ khóa trong C++.
+Nó dùng để đề nghị trình biên dịch thay lời gọi hàm bằng chính phần thân của hàm tại nơi gọi hàm.
+Mục đích chính:
+Giảm chi phí gọi hàm đối với những hàm rất nhỏ và được gọi nhiều lần.
+Cú pháp:
+inline kiểu_dữ_liệu tên_hàm(tham_số)
+{
+    // câu lệnh
+}
+++Ví dụ minh họa:
 #include <iostream>
 using namespace std;
+inline int binhphuong(int x)
+{
+    return x * x;
+}
 int main()
 {
-    // Đây là chú thích một dòng
-    int a = 10;
-    cout << a;
+    int n;
+    cout << "Nhap n = ";
+    cin >> n;
+    // Cap phat mang dong
+    int *a = new int[n];
+    // Nhap mang
+    for(int i = 0; i < n; i++)
+    {
+        cout << "a[" << i << "] = ";
+        cin >> a[i];
+    }
+    // Tinh binh phuong
+    cout << "\nBinh phuong cac phan tu:\n";
+    for(int i = 0; i < n; i++)
+    {
+        cout << binhphuong(a[i]) << " ";
+    }
+    // Giai phong bo nho
+    delete[] a;
     return 0;
 }
-
-+ Chú thích nhiều dòng /* ... */
-/*
-    Đây là chú thích
-    nhiều dòng
-*/
-int a = 10;
-
-2. Nhập / Xuất
-- Trong C thường dùng:
-scanf();
-printf();
-
-- C++ có thể dùng:
-cin;
-cout;
-
-- Ví dụ:
-#include <iostream>
-using namespace std;
-int main()
-{
-    int a;
-    cout << "Nhap a: ";
-    cin >> a;
-    cout << "Gia tri a = " << a;
-    return 0;
-}
-//Nhập nhiều biến
-int a, b;
-cin >> a >> b;
-/Xuất nhiều giá trị
-cout << "a = " << a << ", b = " << b;
-
-3. Chuyển đổi kiểu dữ liệu
-- C++ hỗ trợ cách ép kiểu rõ ràng bằng static_cast.
-- Ví dụ chuyển int sang double:
-#include <iostream>
-using namespace std;
-int main()
-{
-    int a = 5;
-    double b;
-    b = static_cast<double>(a);
-    cout << b;
-    return 0;
-}
-
-- Ví dụ tính trung bình
-+ Nếu không ép kiểu:
-int a = 5, b = 2;
-double c = a / b;
-cout << c; // 2
-Do a / b là phép chia nguyên.
-
-+ Nếu ép kiểu:
-int a = 5, b = 2;
-double c = static_cast<double>(a) / b;
-cout << c; // 2.5
-
-- Ví dụ:
-double x = static_cast<double>(a);

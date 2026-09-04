@@ -1,1 +1,56 @@
-
+10. Biến tham chiếu &: Biến tham chiếu là tên khác của một biến đã tồn tại.  
+int a = 10;  
+int &b = a;  
+b = 20;  
+cout << a; // 20  
+  
++ VD:  
+void hoanVi(int &a, int &b) {  
+    int temp = a;  
+    a = b;  
+    b = temp;  
+}  
+int main() {  
+    int a = 5, b = 10;  
+    hoanVi(a, b);  
+    cout << a << " " << b; // 10 5  
+}  
+  
+11. Chồng hàm — Function Overloading: Các hàm cùng tên nhưng khác danh sách tham số.  
+int tong(int a, int b) {  
+    return a + b;  
+}  
+double tong(double a, double b) {  
+    return a + b;  
+}  
+int tong(int a, int b, int c) {  
+    return a + b + c;  
+}  
+cout << tong(2, 3);       // 5  
+cout << tong(2.5, 3.5);   // 6  
+cout << tong(1, 2, 3);    // 6  
+// Sai  
+int test(int x);  
+double test(int x);  
+  
+12. Chồng toán tử — Operator Overloading: Cho phép định nghĩa cách toán tử hoạt động với kiểu dữ liệu tự tạo.  
++ Ví dụ cộng hai phân số:  
+#include <iostream>  
+using namespace std;  
+struct PhanSo {  
+    int tu;  
+    int mau;  
+    PhanSo operator+(PhanSo p) {  
+        PhanSo kq;  
+        kq.tu = tu * p.mau + p.tu * mau;  
+        kq.mau = mau * p.mau;  
+        return kq;  
+    }  
+};  
+int main() {  
+    PhanSo a = {1, 2};  
+    PhanSo b = {1, 3};  
+    PhanSo c = a + b;  
+    cout << c.tu << "/" << c.mau; // 5/6  
+    return 0;  
+}  

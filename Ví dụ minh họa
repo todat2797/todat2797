@@ -1,1 +1,54 @@
+4. Vị trí khai báo biến: Biến có thể được khai báo ngoài hàm hoặc bên trong hàm/khối lệnh.
++ Biến toàn cục
+#include <iostream>
+using namespace std;
+int x = 10; // Biến toàn cục
+int main() {
+    cout << x;
+}
 
++ Biến cục bộ
+int main() {
+    int x = 20; // Chỉ sử dụng được trong main
+    cout << x;
+}
+
++ Biến trong {} chỉ tồn tại trong phạm vi đó:
+int main() {
+    int a = 10;
+    {
+        int b = 20;
+        cout << b;
+    }
+    // cout << b; // Lỗi
+}
+
+5. Kiểu cấu trúc struct: Dùng để tạo kiểu dữ liệu gồm nhiều thuộc tính.
+
+#include <iostream>
+using namespace std;
+struct SinhVien {
+    string ten;
+    int tuoi;
+    double diem;
+};
+int main() {
+    SinhVien sv;
+    sv.ten = "An";
+    sv.tuoi = 20;
+    sv.diem = 8.5;
+    cout << sv.ten << " " << sv.tuoi << " " << sv.diem;
+    return 0;
+}
+
+6. Toán tử phạm vi: Dùng để xác định phạm vi của biến, hàm, lớp...
++ Ví dụ với biến toàn cục:
+#include <iostream>
+using namespace std;
+int x = 100;
+int main() {
+    int x = 10;
+    cout << x << endl;    // 10
+    cout << ::x << endl;  // 100
+    return 0;
+}

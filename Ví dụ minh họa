@@ -1,1 +1,35 @@
+1. Chú thích: Dùng để ghi chú trong code, trình biên dịch sẽ bỏ qua.
+// Đây là chú thích một dòng
 
+/*
+   Đây là chú thích
+   nhiều dòng
+*/
+int a = 10; // Khai báo biến a
+
+2. Nhập / Xuất: Dùng cin để nhập và cout để xuất.
+#include <iostream>
+using namespace std;
+int main() {
+    int a;
+    cout << "Nhap a: ";
+    cin >> a;
+    cout << "Gia tri a = " << a;
+    return 0;
+}
+
++ Ví dụ nhập nhiều biến:
+int a, b;
+cin >> a >> b;
+cout << a + b;
+
+3. Chuyển đổi kiểu dữ liệu
++ Cách 1: Ép kiểu thông thường
+int a = 5;
+double b = (double)a / 2;
+cout << b; // 2.5
+
++ Cách 2: static_cast
+int a = 5;
+double b = static_cast<double>(a) / 2;
+cout << b; // 2.5

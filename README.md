@@ -1,18 +1,29 @@
 #include <iostream>
 using namespace std;
+
+int x = 10;  // Biến toàn cục
+
+struct SinhVien
+{
+    int tuoi;
+    void xuat();
+};
+
+void SinhVien::xuat()
+{
+    cout << "Tuoi: " << tuoi << endl;
+}
+
 int main()
 {
-    // 1. Chú thích
-    int a, b;
+    int x = 20;  // Có thể khai báo sau câu lệnh
 
-    // 2. Nhập / Xuất
-    cout << "Nhap a va b: ";
-    cin >> a >> b;
+    cout << "x cuc bo = " << x << endl;
+    cout << "x toan cuc = " << ::x << endl;
 
-    // 3. Chuyen doi kieu du lieu
-    double kq = static_cast<double>(a) / b;
-
-    cout << "Ket qua = " << kq;
+    SinhVien sv;
+    sv.tuoi = 18;
+    sv.xuat();
 
     return 0;
 }

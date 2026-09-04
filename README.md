@@ -1,13 +1,18 @@
-Lập trình hướng đối tượng (OOP – Object-Oriented Programming) là một phương pháp lập trình trong đó chương trình được xây dựng dựa trên các đối tượng. Mỗi đối tượng đại diện cho một thực thể và chứa dữ liệu cùng các hành vi liên quan.
+#include <iostream>
+using namespace std;
+int main()
+{
+    // 1. Chú thích
+    int a, b;
 
-Ví dụ, trong một chương trình quản lý sinh viên, ta có thể xem Sinh viên là một đối tượng, có các thông tin như họ tên, tuổi, điểm số và các hành động như nhập thông tin, hiển thị thông tin.
+    // 2. Nhập / Xuất
+    cout << "Nhap a va b: ";
+    cin >> a >> b;
 
-OOP giúp chương trình dễ tổ chức, tái sử dụng, bảo trì và mở rộng hơn, đặc biệt đối với các hệ thống lớn.
+    // 3. Chuyen doi kieu du lieu
+    double kq = static_cast<double>(a) / b;
 
-OOP thường được xây dựng dựa trên 4 đặc trưng chính:
+    cout << "Ket qua = " << kq;
 
-Đóng gói (Encapsulation): bảo vệ và quản lý dữ liệu bên trong đối tượng.
-Kế thừa (Inheritance): cho phép một đối tượng sử dụng lại đặc điểm của đối tượng khác.
-Đa hình (Polymorphism): cùng một thao tác nhưng có thể được thực hiện theo nhiều cách khác nhau.
-Trừu tượng (Abstraction): tập trung vào những đặc điểm cần thiết và ẩn đi các chi tiết phức tạp.
-OOP được sử dụng phổ biến trong các ngôn ngữ như Java, C++, C#, Python, Kotlin và nhiều ngôn ngữ lập trình hiện đại khác.
+    return 0;
+}

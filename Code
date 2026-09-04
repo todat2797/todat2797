@@ -1,0 +1,74 @@
+1. Chú thích
+- C++ hỗ trợ 2 cách chú thích:
++ Chú thích một dòng //
+#include <iostream>
+using namespace std;
+int main()
+{
+    // Đây là chú thích một dòng
+    int a = 10;
+    cout << a;
+    return 0;
+}
+
++ Chú thích nhiều dòng /* ... */
+/*
+    Đây là chú thích
+    nhiều dòng
+*/
+int a = 10;
+
+2. Nhập / Xuất
+- Trong C thường dùng:
+scanf();
+printf();
+
+- C++ có thể dùng:
+cin;
+cout;
+
+- Ví dụ:
+#include <iostream>
+using namespace std;
+int main()
+{
+    int a;
+    cout << "Nhap a: ";
+    cin >> a;
+    cout << "Gia tri a = " << a;
+    return 0;
+}
+//Nhập nhiều biến
+int a, b;
+cin >> a >> b;
+/Xuất nhiều giá trị
+cout << "a = " << a << ", b = " << b;
+
+3. Chuyển đổi kiểu dữ liệu
+- C++ hỗ trợ cách ép kiểu rõ ràng bằng static_cast.
+- Ví dụ chuyển int sang double:
+#include <iostream>
+using namespace std;
+int main()
+{
+    int a = 5;
+    double b;
+    b = static_cast<double>(a);
+    cout << b;
+    return 0;
+}
+
+- Ví dụ tính trung bình
++ Nếu không ép kiểu:
+int a = 5, b = 2;
+double c = a / b;
+cout << c; // 2
+Do a / b là phép chia nguyên.
+
++ Nếu ép kiểu:
+int a = 5, b = 2;
+double c = static_cast<double>(a) / b;
+cout << c; // 2.5
+
+- Ví dụ:
+double x = static_cast<double>(a);

@@ -1,1 +1,39 @@
+7. Cấp phát và giải phóng bộ nhớ: new và delete
++ Một biến
+int *p = new int;
+*p = 10;
+cout << *p;
+delete p;
 
++ Mảng động
+int n = 5;
+int *a = new int[n];
+for (int i = 0; i < n; i++)
+    a[i] = i + 1;
+delete[] a;
+
+8. Hàm inline: inline thường dùng với các hàm nhỏ.
+inline int binhPhuong(int x) {
+    return x * x;
+}
+int main() {
+    cout << binhPhuong(5); // 25
+}
+
+9. Tham số giá trị mặc định: Nếu không truyền đối số, hàm sẽ sử dụng giá trị mặc định.
+#include <iostream>
+using namespace std;
+void xinChao(string ten = "Ban") {
+    cout << "Xin chao " << ten;
+}
+int main() {
+    xinChao();       // Xin chao Ban
+    xinChao("An");   // Xin chao An
+}
+
++ Ví dụ khác:
+int tong(int a, int b = 10) {
+    return a + b;
+}
+cout << tong(5);     // 15
+cout << tong(5, 20); // 25

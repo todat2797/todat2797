@@ -5,7 +5,6 @@
    Đây là chú thích
    nhiều dòng
 */
-
 int a = 10; // Khai báo biến a
 
 2. Nhập / Xuất: Dùng cin để nhập và cout để xuất.

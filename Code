@@ -1,74 +1,102 @@
-1. Chú thích
-- C++ hỗ trợ 2 cách chú thích:
-+ Chú thích một dòng //
-#include <iostream>
-using namespace std;
+4. Vị trí khai báo biến
+Trong C, biến cục bộ thường phải khai báo ở đầu khối lệnh, trước các câu lệnh thực thi.
+
+Ví dụ C:
+
+void main()
+{
+    int a, b;
+    a = 10;
+    b = 20;
+}
+
+Trong C++, có thể khai báo biến ở bất kỳ vị trí nào trong khối lệnh, miễn là trước khi sử dụng biến.
+
 int main()
 {
-    // Đây là chú thích một dòng
     int a = 10;
+
     cout << a;
-    return 0;
-}
 
-+ Chú thích nhiều dòng /* ... */
-/*
-    Đây là chú thích
-    nhiều dòng
-*/
-int a = 10;
-
-2. Nhập / Xuất
-- Trong C thường dùng:
-scanf();
-printf();
-
-- C++ có thể dùng:
-cin;
-cout;
-
-- Ví dụ:
-#include <iostream>
-using namespace std;
-int main()
-{
-    int a;
-    cout << "Nhap a: ";
-    cin >> a;
-    cout << "Gia tri a = " << a;
-    return 0;
-}
-//Nhập nhiều biến
-int a, b;
-cin >> a >> b;
-/Xuất nhiều giá trị
-cout << "a = " << a << ", b = " << b;
-
-3. Chuyển đổi kiểu dữ liệu
-- C++ hỗ trợ cách ép kiểu rõ ràng bằng static_cast.
-- Ví dụ chuyển int sang double:
-#include <iostream>
-using namespace std;
-int main()
-{
-    int a = 5;
-    double b;
-    b = static_cast<double>(a);
+    int b = 20;
     cout << b;
-    return 0;
 }
 
-- Ví dụ tính trung bình
-+ Nếu không ép kiểu:
-int a = 5, b = 2;
-double c = a / b;
-cout << c; // 2
-Do a / b là phép chia nguyên.
+➡️ Đây là một điểm thuận tiện của C++: biến có thể được khai báo ngay tại nơi cần sử dụng.
 
-+ Nếu ép kiểu:
-int a = 5, b = 2;
-double c = static_cast<double>(a) / b;
-cout << c; // 2.5
+5. Kiểu cấu trúc – struct
+Trong C, khi khai báo cấu trúc thường phải sử dụng từ khóa struct khi khai báo biến:
 
-- Ví dụ:
-double x = static_cast<double>(a);
+struct SinhVien
+{
+    char ten[30];
+    int tuoi;
+};
+
+struct SinhVien sv;
+
+Trong C++, tên struct có thể được sử dụng trực tiếp như một tên kiểu dữ liệu:
+
+struct SinhVien
+{
+    string ten;
+    int tuoi;
+};
+
+SinhVien sv;
+
+Đặc biệt, struct trong C++ còn có thể chứa hàm thành viên, constructor, và các mức truy cập public, private, protected.
+
+struct SinhVien
+{
+    string ten;
+    int tuoi;
+
+    void xuat()
+    {
+        cout << ten << " " << tuoi;
+    }
+};
+
+➡️ Vì vậy, trong C++ struct gần giống class, điểm khác quan trọng là thành viên của struct mặc định là public, còn thành viên của class mặc định là private.
+
+6. Toán tử phạm vi ::
+C++ có thêm toán tử phạm vi :: (scope resolution operator). Nó được dùng để xác định phạm vi của một tên.
+
+a. Truy cập biến toàn cục khi trùng tên
+int x = 10;
+
+int main()
+{
+    int x = 20;
+
+    cout << x;     // 20
+    cout << ::x;   // 10
+}
+
+::x chỉ rõ rằng ta muốn sử dụng biến x ở phạm vi toàn cục.
+
+b. Định nghĩa hàm thành viên bên ngoài lớp
+Đây là cách rất hay gặp trong bài OOP:
+
+class dathuc
+{
+public:
+    void nhap();
+};
+
+void dathuc::nhap()
+{
+    cout << "Nhap da thuc";
+}
+
+Trong đó:
+
+dathuc::nhap()
+
+có nghĩa là hàm nhap() thuộc lớp dathuc.
+
+c. Truy cập thành phần của namespace
+std::cout << "Hello";
+
+std::cout nghĩa là sử dụng cout thuộc namespace std.
